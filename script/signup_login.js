@@ -1,9 +1,9 @@
 /* start signup code */
 function signup() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var mobile = document.getElementById("mobile").value;
+    var name = btoa(document.getElementById("name").value);
+    var email = btoa(document.getElementById("email").value);
+    var password = btoa(document.getElementById("password").value);
+    var mobile = btoa(document.getElementById("mobile").value);
 
     if (name != "" && email != "" && password != "" && mobile != "") {
         var user_input = { name: name, email: email, password: password, mobile: mobile }
@@ -22,7 +22,7 @@ function signup() {
 }
 
 function user_exist() {
-    var email = document.getElementById("email").value;
+    var email = btoa(document.getElementById("email").value);
     if (localStorage.getItem(email) != null) {
         document.getElementById("user_found").innerHTML = "User already existed";
         document.getElementById("password").disabled = true;
@@ -47,8 +47,8 @@ function user_exist() {
 
 /* start login code */
 function login(){
-    var user_name = document.getElementById("login_user").value;
-    var user_password = document.getElementById("login_password").value;
+    var user_name = btoa(document.getElementById("login_user").value);
+    var user_password = btoa(document.getElementById("login_password").value);
     var user_input = {username:user_name,password:user_password};
     var user_data = JSON.stringify(user_input);
     sessionStorage.setItem(user_name,user_data);
@@ -63,11 +63,13 @@ function login(){
         var signup_details = JSON.parse(signup_input);
         if(user_details.username == signup_details.email && user_details.password == signup_details.password)
         {
-            alert("login success");
+            location.replace("profile/profile.html");
+            sessionStorage.setItem("user_mail",user_name);
+            return false;
         }
         else{
+
             alert("password not match");
-            location.assign("https://www.google.com","_self");
         }
         
     }

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title>profile</title>
+	<link rel="stylesheet" href="style/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+
+<body>
+	<div id="profile-page">
+		<div id="profile-bg">
+			<div id="pic-upload">
+				<center>
+					<img src="../images/logo.png" id="logo">
+					<h1 id="app-name">SAFE_DOC</h1>
+				</center>
+
+				<div id="upload-btn">
+					<i class="fa fa-upload" id="upload-icon">Upload pic</i>
+					<input type="file" accept="image/*" id="profile-pic-upload" onchange="upload_pic()">
+				</div>
+
+				<h1 id="welcome"></h1>
+				<i class="fa fa-forward" id="next-icon" style="display:none"></i>
+
+			</div>
+		</div>
+
+	</div>
+	<script src="script/welcome_up.js"></script>
+</body>
+
+</html>
