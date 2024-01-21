@@ -84,7 +84,7 @@ body {
 	font-family: sans-serif;
 	font-size: 50px;
 	float: left;
-	margin: 30px;
+	margin: 80px;
 }
 
 #next-icon {
@@ -95,4 +95,289 @@ body {
 	color: #FF7466;
 	text-shadow: 0px 0px 3px #ddd;
 	cursor: pointer;
+}
+
+/* start app content */
+
+#app-content header {
+	width: 100%;
+	height: 200px;
+	float: left;
+	background-color: #FF7466;
+}
+
+
+#app-content #profile-name {
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+	font-size: 50px;
+	text-transform: capitalize;
+	color: white;
+	text-shadow: 0px 2px 1px black;
+}
+
+#app-content #profile-pic {
+	width: 120px;
+	height: 120px;
+	border-radius: 50%;
+	background: white;
+	box-shadow: 0px 0px 10px grey;
+	margin: 0px auto;
+}
+
+#app-content #app-menu {
+	list-style: none;
+	width: 80%;
+	margin: 0 auto;
+	padding: 35px 15px;
+}
+
+#app-menu li {
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-shadow: 0px 0px 5px #ddd;
+	width: 120px;
+	padding: 12px;
+	margin: 100px 55px;
+	text-align: center;
+
+}
+
+#app-menu li a {
+	font-family: 'Poppins', sans-serif;
+	text-decoration: none;
+	color: #1A93CC;
+	font-weight: bold
+}
+
+
+#app-content footer {
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	bottom: 0;
+	background: #FF7466;
+	z-index: -1000
+}
+
+#app-content footer div {
+	width: 15%;
+	float: left;
+	margin: 0 42.5%;
+
+}
+
+#app-content footer div h4 {
+	font-family: sans-serif;
+	font-size: 20px;
+	color: white;
+	padding: 0;
+	margin: 18px 5px;
+}
+
+#app-content footer div h4,
+img {
+	float: left;
+}
+
+#app-content footer div img {
+	margin-top: 5px;
+}
+
+#profile-notice {
+	position: absolute;
+	bottom: 200%;
+	color: #323232;
+	font-size: 40px;
+	display: none;
+	font-family: sans-serif;
+}
+
+/* start contacts page coding */
+
+#contacts-page #add-icon {
+	font-size: 60px;
+	margin: 100px;
+	color: #FF7466;
+	cursor: pointer;
+}
+
+#contacts-page header {
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#contacts-page header #pic-box {
+	width: 100px;
+	height: 100px;
+	border: 2px solid white;
+	background-color: white;
+	box-shadow: 0px 0px 5px grey;
+	position: fixed;
+	border-radius: 50%;
+	left: 10px;
+	top: 10px;
+}
+
+#contacts-page h1 {
+	text-align: center;
+	font-size: 50px;
+	font-family: "Poppins", sans-serif;
+	color: #3992FF;
+}
+
+#add-contact {
+	float: left;
+	width: 25%;
+	margin: 20px 38%;
+	border-left: 2px solid #FF7466;
+	border-bottom: 2px solid #FF7466;
+	padding-bottom: 15px
+}
+
+
+#add-contact form input[type='text'],
+#add-contact form input[type='number'] {
+	border: none;
+	border-left: 5px solid #3992FF;
+	width: 90%;
+	padding: 15px;
+	margin: 20px 0;
+	margin-top: 0;
+	float: right;
+	box-shadow: 0px 0px 5px 0px #ccc;
+}
+
+#add-contact form input[type='button'] {
+	border: none;
+	background-color: yellow;
+	padding: 15px;
+	color: black;
+	width: 100px;
+	float: right;
+	font-weight: bold;
+}
+
+#add-contact #add-icon {
+	color: #FF7466;
+	position: absolute;
+	top: 10px;
+	left: 523px;
+}
+
+#contacts-bar {
+	width: 350px;
+	background-color: black;
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100vh;
+	padding: 10px 20px;
+	overflow-y: scroll;
+}
+
+#contacts-bar h2 {
+	font-family: sans-serif;
+	color: red;
+	padding: 0;
+	margin: 0;
+	font-size: 30px;
+
+}
+
+#contacts-bar input[type='search'] {
+	border: none;
+	padding: 10px;
+	width: 100%;
+	margin: 10px 0;
+	box-shadow: 0px 0px 5px #323232;
+}
+
+#contacts-bar #contacts-list {
+	padding: 0;
+	margin: 0;
+}
+
+#contacts-bar fieldset {
+	border: none;
+	border-top: 1.5px solid white;
+	width: 100%;
+	margin: 10px 0;
+}
+
+#contacts-bar fieldset legend {
+	font-family: "Poppins", sans-serif;
+	color: yellow;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+#contacts-bar fieldset ol li {
+	color: white;
+	padding: 8px;
+	float: left;
+}
+
+#delete-icon {
+	font-size: 20px;
+	color: yellow;
+	cursor: pointer;
+	float: right;
+	margin-right: 10px;
+}
+
+
+
+/* start contact scroll bar */
+
+#contacts-bar::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	background-color: #F5F5F5;
+}
+
+#contacts-bar::-webkit-scrollbar {
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#contacts-bar::-webkit-scrollbar-thumb {
+	background-color: #FF7466;
+
+}
+
+
+
+/* end contact scroll bar */
+#contact-footer {
+	width: 340px;
+	height: 30px;
+	background: white;
+	position: absolute;
+	bottom: 0;
+	right: 10px;
+	padding: 5px;
+	font-family: sans-serif;
+	font-weight: bold
+}
+
+#restore-contacts {
+	width: 77%;
+	height: 0;
+	background: white;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+#restore-table {
+	text-align: center;
+
+}
+
+#restore-table th,
+#restore-table td {
+	border: 1px solid #ccc;
+	padding: 10px;
 }

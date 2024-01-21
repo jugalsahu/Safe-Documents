@@ -25,9 +25,37 @@
 
 				<h1 id="welcome"></h1>
 				<i class="fa fa-forward" id="next-icon" style="display:none"></i>
-
 			</div>
 		</div>
+
+		<div id="app-content">
+
+			<header>
+				<h1 id="profile-name"></h1>
+				<div id="profile-pic"></div>
+				<ul id="app-menu">
+					<li><a href="#"><i class="fa fa-briefcase" style="font-size:30px;color:black"></i><br> Bussiness</a>
+					</li>
+					<li><a href="#"><i class="fa fa-pencil" style="font-size:30px;color:black"></i><br> About Me</a>
+					</li>
+					<li><a href="pages/contacts.html"><i class="fa fa-phone" style="font-size:30px;color:black"></i><br>
+							Contacts</a></li>
+					<li><a href="#"><i class="fa fa-play" style="font-size:30px;color:black"></i><br> Playlist</a></li>
+					<li onclick="logout()"><a href="#"><i class="fa fa-sign-out"
+								style="font-size:30px;color:black"></i><br> Logout</a></li>
+				</ul>
+			</header>
+			<footer>
+				<div>
+					<img src="../images/logo.png" width="50">
+					<h4>SAFE_DOC</h4>
+					<h1 id="profile-notice">Please wait...</h1>
+				</div>
+			</footer>
+
+		</div>
+
+
 
 	</div>
 	<script src="script/welcome_up.js"></script>

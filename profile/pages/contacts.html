@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<title>profile</title>
+	<link rel="stylesheet" href="../style/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+</head>
+
+<body>
+	<div id="contacts-page">
+		<header>
+			<img src="../../images/triangle.png" width="130">
+			<div id="pic-box"></div>
+		</header>
+		<h1>Private Contacts</h1>
+		<div id="add-contact">
+			<i class="fa fa-plus-circle" id="add-icon"></i>
+			<form id="add-form">
+				<input type="text" name="fullname" id="fullname" placeholder="Fullname">
+				<br>
+				<input type="text" name="fmobile" id="pnum" placeholder="Primary number">
+				<br>
+				<input type="text" name="smobile" id="snum" placeholder="Secondary number">
+				<br>
+				<input type="button" value="Add" onclick="add_contacts()">
+				<center><span id="saved" style="font-family:sans-serif;font-weight:bold;display:none">Sucessfully Saved
+						!</span></center>
+			</form>
+		</div>
+
+		<div id="contacts-bar">
+			<h2 id="c-list">Contacts list</h2>
+			<form>
+				<input type="search" placeholder="search contacts here ..." oninput="search_contact(this)">
+			</form>
+			<div id="contacts">
+				
+
+			</div>
+
+		</div>
+		<div id="contact-footer">
+			<span style="float:left;cursor:pointer" onclick="logout()"><i class="fa fa-sign-out"></i> Logout</span>
+			<span style="float:right;cursor:pointer" onclick=" restore_contact()"><i class="fa fa-refresh"></i> Restore
+				contacts</span>
+		</div>
+		<div id="restore-contacts">
+			<h1 id="restore-notice"></h1>
+			<table width="80%" align="center" id="restore-table">
+				<tr>
+					<th>
+						Contacts name
+					</th>
+					<th>
+						First number
+					</th>
+					<th>
+						Second number
+					</th>
+					<th>
+						Restore now
+					</th>
+				</tr>
+
+
+			</table>
+			<i class="fa fa-times-circle" style="position: absolute;right:20px;top:40px;font-size:25px;color:red"
+				onclick="this.parentElement.style.height='0'"></i>
+		</div>
+		<div>
+		</div>
+	</div>
+
+	<script src="script/contact_script.js"></script>
+</body>
+
+</html>

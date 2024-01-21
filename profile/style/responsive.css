@@ -1,0 +1,76 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #app-content header {
+        height: 100px;
+    }
+    #app-content #profile-name {
+        font-size: 30px;
+    }
+    #app-content #profile-pic{
+        width: 80px;
+        height: 80px;
+        top: 8%;
+        background-color: rgb(53, 255, 211);
+    }
+  }
+  
+  /* Small devices (portrait tablets and large phones, 600px and up) */
+  @media only screen and (min-width: 600px) and (max-width:768px) {
+    #app-content header {
+        height: 100px;
+    }
+    #app-content #profile-name {
+        font-size: 30px;
+    }
+    #app-content #profile-pic{
+        width: 80px;
+        height: 80px;
+        top: 8%;
+        background-color: rgb(179, 255, 0);
+    }
+  }
+  
+  /* Medium devices (landscape tablets, 768px and up) */
+  @media only screen and (min-width: 768px) and (max-width:992px) {
+    #app-content header {
+        height: 150px;
+    }
+    #app-content #profile-name {
+        font-size: 40px;
+    }
+    #app-content #profile-pic{
+        width: 100px;
+        height: 100px;
+        top: 12%;
+        background-color: rgb(255, 2, 112);
+    }
+  } 
+  
+  /* Large devices (laptops/desktops, 992px and up) */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #app-content header {
+        height: 200px;
+    }
+    #app-content #profile-name {
+        font-size: 60px;
+    }
+    #app-content #profile-pic{
+        width: 120px;
+        height: 120px;
+        top: 18%;
+        background-color: green;
+    }
+  } 
+  
+  /* Extra large devices (large laptops and desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    #app-content header {
+        height: 200px;
+    }
+    #app-content #profile-name {
+        font-size: 60px;
+    }
+  }
+
+  
+  

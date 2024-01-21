@@ -31,6 +31,7 @@ function upload_pic() {
                 localStorage.setItem(sessionStorage.getItem("user_mail") + "image_url", image_url);
                 var hide_uploadbox = document.getElementById("profile-bg");
                 hide_uploadbox.style.display = "none";
+                window.location = location.href;
             }
         }
     }
@@ -62,6 +63,31 @@ function stop_upload() {
 
 stop_upload();
 
-location.onloadend = function () {
+// profile name and pic showing
+function showing_pic_name() {
+    var profile_name = document.getElementById("profile-name");
+    var profile_pic = document.getElementById("profile-pic");
+    var user_mail = sessionStorage.getItem("user_mail");
+    var user_details = localStorage.getItem(user_mail);
+    var user_data = JSON.parse(user_details);
+    profile_name.innerHTML = atob(user_data.name);
 
+    var user_profile = localStorage.getItem(user_mail + "image_url");
+    profile_pic.style.backgroundImage = "url(" + user_profile + ")";
+    profile_pic.style.backgroundRepeat = "no-repeat";
+    profile_pic.style.backgroundSize = "cover";
+    location.assign = location.href;
+
+}
+
+showing_pic_name();
+
+// signout coding
+
+function logout(){
+    sessionStorage.clear();
+    document.getElementById("profile-notice").style.display="block";
+    setTimeout(function(){
+        window.location ="../index.html";
+    },2000);
 }
