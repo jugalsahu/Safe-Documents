@@ -1,3 +1,10 @@
+window.onload = function(){
+	var clist = document.getElementById("contacts");
+	if(clist.children.length == 0){
+		document.getElementById("c-list").innerHTML = "No contact found";
+	}
+}
+
 // showing profile picture
 function show_profile_pic() {
 	var pic_box = document.getElementById("pic-box");
@@ -9,15 +16,7 @@ function show_profile_pic() {
 
 show_profile_pic();
 
-/* <fieldset>
-					<legend>jugal kishore sahu</legend>
-					<ol>
-						<li>+917873841779</li>
-						<li>+918260364243</li>
-					</ol>
-					<i class="fa fa-trash" id="delete-icon"></i>
-				</fieldset>
-*/
+
 /* add contacts coding */
 
 function add_contacts() {
@@ -66,22 +65,39 @@ function show_contacts() {
 			var li_one = document.createElement("LI");
 			var li_two = document.createElement("LI");
 			var trash = document.createElement("I");
-			trash.setAttribute("class","fa fa-trash");
-			trash.setAttribute("id","delete-icon");
-			trash.setAttribute("tital","delete contact");
+			trash.setAttribute("class", "fa fa-trash");
+			trash.setAttribute("id", "delete-icon");
+			trash.setAttribute("title", "delete contact");
 			con.appendChild(fieldset);
 			fieldset.appendChild(legend);
 			fieldset.appendChild(ol);
 			ol.appendChild(li_one)
 			ol.appendChild(li_two);
 			fieldset.appendChild(trash);
-
 			legend.appendChild(document.createTextNode(json_extract.fullname));
 			li_one.appendChild(document.createTextNode(json_extract.pnum));
 			li_two.appendChild(document.createTextNode(json_extract.snum));
+			del_contact(keys,trash);
 		}
 	}
 }
 
 show_contacts();
 
+/* delete contact */
+
+function del_contact(contact_name, del_btn){
+	del_btn.onclick = function(){
+		var answer = confirm("Do you want to delet contact ? ");
+		if(answer==true)
+		{
+			del_btn.parentElement.remove();
+			localStorage.removeItem(contact_name);
+			var clist = document.getElementById("contacts");
+			if(clist.children.length == 0){
+			document.getElementById("c-list").innerHTML = "No contact found";
+			}
+		}
+
+	}
+}
