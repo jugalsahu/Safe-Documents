@@ -101,3 +101,22 @@ function del_contact(contact_name, del_btn){
 
 	}
 }
+
+/* search cotact */
+
+function search_contact(user_inut){
+	var keyword = user_inut.value.toUpperCase();
+	var contact_list = document.getElementById("contacts");
+	var legend = contact_list.getElementsByTagName("LEGEND");
+	var i;
+	for(i=0;i<legend.length;i++)
+	{
+		if(legend[i].innerHTML.toUpperCase().indexOf(keyword) != -1)
+		{
+			legend[i].parentElement.style.display ="";
+		}
+		else{
+			legend[i].parentElement.style.display ="none";
+		}
+	}
+}
