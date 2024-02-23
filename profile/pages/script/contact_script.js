@@ -1,6 +1,6 @@
-window.onload = function(){
+window.onload = function () {
 	var clist = document.getElementById("contacts");
-	if(clist.children.length == 0){
+	if (clist.children.length == 0) {
 		document.getElementById("c-list").innerHTML = "No contact found";
 	}
 }
@@ -68,16 +68,38 @@ function show_contacts() {
 			trash.setAttribute("class", "fa fa-trash");
 			trash.setAttribute("id", "delete-icon");
 			trash.setAttribute("title", "delete contact");
+			var edit = document.createElement("I");
+			edit.setAttribute("class", "fa fa-edit");
+			edit.setAttribute("id", "delete-icon");
+			edit.setAttribute("title", "edit contact");
+			var save = document.createElement("I");
+			var saved = document.createElement("SPAN");
+			save.setAttribute("class", "fa fa-save");
+			save.setAttribute("id", "delete-icon");
+			save.setAttribute("title", "save contact");
 			con.appendChild(fieldset);
 			fieldset.appendChild(legend);
 			fieldset.appendChild(ol);
 			ol.appendChild(li_one)
 			ol.appendChild(li_two);
-			fieldset.appendChild(trash);
+			ol.appendChild(trash);
+			ol.appendChild(edit);
+			ol.appendChild(save);
+			ol.appendChild(saved);
+			save.style.display = "none";
 			legend.appendChild(document.createTextNode(json_extract.fullname));
 			li_one.appendChild(document.createTextNode(json_extract.pnum));
 			li_two.appendChild(document.createTextNode(json_extract.snum));
-			del_contact(keys,trash);
+			saved.appendChild(document.createTextNode("saved successfully !"));
+			saved.style.color = "red";
+			saved.style.fontFamily = "sans-serif";
+			saved.style.fontWeight = "bold";
+			saved.style.float = "right";
+			saved.style.clear = "both";
+			saved.style.marginTop = "5px";
+			saved.style.display = "none";
+			del_contact(keys, trash);
+			edit_contact(keys, edit, save, saved);
 		}
 	}
 }
@@ -86,37 +108,94 @@ show_contacts();
 
 /* delete contact */
 
-function del_contact(contact_name, del_btn){
-	del_btn.onclick = function(){
+function del_contact(contact_name, del_btn) {
+	del_btn.onclick = function () {
 		var answer = confirm("Do you want to delet contact ? ");
-		if(answer==true)
-		{
+		if (answer == true) {
 			del_btn.parentElement.remove();
 			localStorage.removeItem(contact_name);
 			var clist = document.getElementById("contacts");
-			if(clist.children.length == 0){
-			document.getElementById("c-list").innerHTML = "No contact found";
+			if (clist.children.length == 0) {
+				document.getElementById("c-list").innerHTML = "No contact found";
 			}
 		}
 
 	}
 }
 
+/* edit contact */
+
+function edit_contact(contact_name, edit_btn, save_btn, saved) {
+	edit_btn.onclick = function () {
+		save_btn.style.display = "block";
+		var ol = this.parentElement;
+		var fieldset = ol.parentElement;
+		var legend = fieldset.getElementsByTagName("LEGEND");
+		legend[0].setAttribute("contenteditable", "true");
+		legend[0].focus();
+		var li = ol.getElementsByTagName("LI");
+		var i;
+		for (i = 0; i < li.length; i++) {
+			li[i].setAttribute("contenteditable", "true");
+		}
+
+
+		var recent_legend;
+		var current_legend;
+		legend[0].onclick = function () {
+			recent_legend = this.innerHTML;
+		}
+
+		legend[0].onblur = function () {
+			current_legend = this.innerHTML;
+		}
+
+		var recent_number = [];
+		var current_number = [];
+		li[0].onclick = function () {
+			recent_number[0] = this.innerHTML;
+		}
+		li[1].onclick = function () {
+			recent_number[1] = this.innerHTML;
+		}
+
+		li[0].onblur = function () {
+			current_number[0] = this.innerHTML;
+		}
+		li[1].onblur = function () {
+			current_number[1] = this.innerHTML;
+		}
+
+		save_btn.onclick = function(){
+			var edit_data = {
+				fullname:current_legend==undefined? legend[0].innerHTML:current_legend,
+				pnum:current_number[0]==undefined?li[0].innerHTML:current_number[0],
+				snum:current_number[1]==undefined?li[1].innerHTML:current_number[1]
+			};
+			var final_data = JSON.stringify(edit_data);
+			var txt = localStorage.getItem(contact_name);
+			localStorage.setItem(contact_name,txt.replace(txt,final_data));
+			saved.style.display="block";
+			setTimeout(function(){
+				saved.style.display="none";
+			},2000);
+		}
+	}
+}
+
 /* search cotact */
 
-function search_contact(user_inut){
+function search_contact(user_inut) {
 	var keyword = user_inut.value.toUpperCase();
 	var contact_list = document.getElementById("contacts");
 	var legend = contact_list.getElementsByTagName("LEGEND");
 	var i;
-	for(i=0;i<legend.length;i++)
-	{
-		if(legend[i].innerHTML.toUpperCase().indexOf(keyword) != -1)
-		{
-			legend[i].parentElement.style.display ="";
+	for (i = 0; i < legend.length; i++) {
+		if (legend[i].innerHTML.toUpperCase().indexOf(keyword) != -1) {
+			legend[i].parentElement.style.display = "";
 		}
-		else{
-			legend[i].parentElement.style.display ="none";
+		else {
+			legend[i].parentElement.style.display = "none";
 		}
 	}
 }
