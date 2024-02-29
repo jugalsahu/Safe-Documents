@@ -113,6 +113,7 @@ function del_contact(contact_name, del_btn) {
 		var answer = confirm("Do you want to delet contact ? ");
 		if (answer == true) {
 			del_btn.parentElement.remove();
+			document.cookie = contact_name+"="+localStorage.getItem(contact_name)+";max-age:2592000";
 			localStorage.removeItem(contact_name);
 			window.location = location.href;
 			var clist = document.getElementById("contacts");
@@ -215,9 +216,61 @@ function logout(){
 }
 
 /* restore contacts */
-function restore_contact(){
-	var page = document.getElementById("restore-contacts");
-	var restore_table = document.getElementById("restore-table");
-	page.style.height ="100vh";
-	page.style.transition="0.5s";
+function restore_contact() {
+    var page = document.getElementById("restore-contacts");
+    var restore_table = document.getElementById("restore-table");
+    page.style.height = "100vh";
+    page.style.transition = "0.5s";
+    var notice = document.getElementById("restore-notice");
+    
+    // Clear existing rows in the table
+	//restore_table.innerHTML = "";
+
+    if (document.cookie.length != 0) {
+        notice.innerHTML = "Deleted Contacts";
+        var devide_cookie = document.cookie.split(";");
+        var i, j;
+        for (i = 0; i < devide_cookie.length; i++) {
+            var key_value = devide_cookie[i].split("=");
+            for (j = 0; j < key_value.length; j++) {
+                if (key_value[j].indexOf("contact") == -1) {
+                    var extract = JSON.parse(key_value[j]);
+                    var tr = document.createElement("TR");
+                    var td_cname = document.createElement("TD");
+                    var td_pnum = document.createElement("TD");
+                    var td_snum = document.createElement("TD");
+                    var td_res = document.createElement("TD");
+                    td_cname.appendChild(document.createTextNode(extract.fullname));
+                    td_pnum.appendChild(document.createTextNode(extract.pnum));
+                    td_snum.appendChild(document.createTextNode(extract.snum));
+                    var res_icon = document.createElement("I");
+                    res_icon.style.color = "red";
+                    res_icon.style.cursor = "pointer";
+                    res_icon.setAttribute("class", "fa fa-refresh");
+                    td_res.appendChild(res_icon);
+                    tr.appendChild(td_cname);
+                    tr.appendChild(td_pnum);
+                    tr.appendChild(td_snum);
+                    tr.appendChild(td_res);
+                    restore_table.appendChild(tr);
+					res_icon.onclick = function(){
+						var res_per = confirm("Do you want to restore ?");
+						{
+						var this_td = this.parentElement;
+						var this_tr = this_td.parentElement;
+						var td_all = this_tr.getElementsByTagName("TD");
+						var restore_obj = {fullname:td_all[0].innerHTML,pnum:td_all[1].innerHTML,snum:td_all[2].innerHTML}
+						var readyForRestore = JSON.stringify(restore_obj);
+						localStorage.setItem(td_all[0].innerHTML+" contact",readyForRestore);
+						document.cookie = td_all[0].innerHTML+" contact=;max-age:0";
+						this_tr.remove();
+						window.location = location.href;
+						}
+					}
+                }
+            }
+        }
+    } else {
+        notice.innerHTML = "No Deleted Contacts";
+    }
 }

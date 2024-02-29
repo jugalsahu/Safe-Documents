@@ -369,6 +369,7 @@ img {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	overflow-y: scroll;
 }
 
 #restore-table {
