@@ -114,6 +114,7 @@ function del_contact(contact_name, del_btn) {
 		if (answer == true) {
 			del_btn.parentElement.remove();
 			localStorage.removeItem(contact_name);
+			window.location = location.href;
 			var clist = document.getElementById("contacts");
 			if (clist.children.length == 0) {
 				document.getElementById("c-list").innerHTML = "No contact found";
@@ -177,6 +178,7 @@ function edit_contact(contact_name, edit_btn, save_btn, saved) {
 			localStorage.setItem(contact_name,txt.replace(txt,final_data));
 			saved.style.display="block";
 			setTimeout(function(){
+				save_btn.style.display="none";
 				saved.style.display="none";
 			},2000);
 		}
@@ -198,4 +200,24 @@ function search_contact(user_inut) {
 			legend[i].parentElement.style.display = "none";
 		}
 	}
+}
+
+/* logout page */
+function logout(){
+	var user = confirm("Are you sure ?");
+	if(user== true)
+	{
+		sessionStorage.clear();
+		setTimeout(function(){
+			window.location = "../../index.html";
+		},2000);
+	}
+}
+
+/* restore contacts */
+function restore_contact(){
+	var page = document.getElementById("restore-contacts");
+	var restore_table = document.getElementById("restore-table");
+	page.style.height ="100vh";
+	page.style.transition="0.5s";
 }

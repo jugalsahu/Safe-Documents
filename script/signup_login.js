@@ -18,6 +18,9 @@ function signup() {
         setTimeout(function () { document.getElementById("signup_success").innerHTML = ""; }, 2000);
         return false;
     }
+    else{
+        alert("some fields are not filled");
+    }
     
 }
 
